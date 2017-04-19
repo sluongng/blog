@@ -10,6 +10,7 @@ import RouteNavItem from "./components/RouteNavItem";
 import "./App.css";
 import { CognitoUserPool, } from 'amazon-cognito-identity-js';
 import config from './config';
+import AWS from 'aws-sdk';
 
 class App extends Component {
   getCurrentUser() {
@@ -74,6 +75,10 @@ class App extends Component {
       currentUser.signOut();
     }
 
+    if(AWS.config.credentials) {
+      AWS.config.credentials.clearCachedId();
+    }
+
     this.updateUserToken(null);
     this.props.history.push('/login');
   }
@@ -102,7 +107,10 @@ class App extends Component {
           <Navbar.Collapse>
             <Nav pullRight>
               { this.state.userToken
-                ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
+                ? [
+                  <RouteNavItem key={1} onClick={this.handleNavLink} href="/notes/new">New Notes</RouteNavItem>,
+                  <NavItem key={2} onClick={this.handleLogout}>Logout</NavItem>
+                ]
                 : [
                   <RouteNavItem key={1} onClick={this.handleNavLink} href="/signup">Signup</RouteNavItem>,
                   <RouteNavItem key={2} onClick={this.handleNavLink} href="/login">Login</RouteNavItem>
