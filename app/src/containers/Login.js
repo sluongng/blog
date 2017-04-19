@@ -9,15 +9,24 @@ import {
   FormControl,
   ControlLabel
 } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
+import LoaderButton from '../components/LoaderButton';
 import './Login.css';
+import config from '../config.js';
+import {
+  CognitoUserPool,
+  AuthenticationDetails,
+  CognitoUser
+} from 'amazon-cognito-identity-js';
 
 class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      isLoading: false,
       username: '',
-      password: ''
+      password: '',
     };
   }
 
@@ -32,8 +41,45 @@ class Login extends Component {
     });
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
+
+    this.setState({ isLoading: true });
+
+    try {
+      const userToken = await this.login(this.state.username, this.state.password);
+
+      this.props.updateUserToken(userToken);
+      this.props.history.push('/');
+    }
+    catch(e) {
+      alert(e);
+      this.setState({ isLoading: false });
+    }
+  }
+
+  login(username, password) {
+    const userPool = new CognitoUserPool({
+      UserPoolId: config.cognito.USER_POOL_ID,
+      ClientId: config.cognito.APP_CLIENT_ID
+    });
+    const authenticationData = {
+      Username: username,
+      Password: password
+    };
+
+    const user = new CognitoUser({
+      Username: username,
+      Pool: userPool
+    });
+    const authenticationDetails = new AuthenticationDetails(authenticationData);
+
+    return new Promise((resolve, reject) => (
+      user.authenticateUser(authenticationDetails, {
+        onSuccess: (result) => resolve(result.getIdToken().getJwtToken()),
+        onFailure: (err) => reject(err),
+      })
+    ));
   }
 
   render () {
@@ -59,18 +105,19 @@ class Login extends Component {
             />
           </FormGroup>
 
-          <Button
+          <LoaderButton
             block
             bsSize="large"
-            disabled={ !this.validateForm() }
+            disabled={ ! this.validateForm() }
             type="submit"
-          >
-            Login
-          </Button>
+            isLoading={ this.state.isLoading }
+            text="Login"
+            loadingText="Logging in..."
+          />
         </form>
       </div>
     );
   }
 }
 
-export default Login;
+export default withRouter(Login);
