@@ -13,7 +13,7 @@ import LoaderButton from '../components/LoaderButton';
 import config from '../config';
 import './NewNote.css'
 import {
-  callApiGateway,
+  invokeApiGateway,
   s3Upload
 } from '../libs/awsLib';
 
