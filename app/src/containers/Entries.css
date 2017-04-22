@@ -1,8 +1,8 @@
-.NewNote form {
+.Entries form {
   padding-bottom: 15px;
 }
 
-.NewNote form textarea {
+.Entries form textarea {
   height: 300px;
   font-size: 24px;
 }

@@ -13,6 +13,15 @@ import config from './config';
 import AWS from 'aws-sdk';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      userToken: null,
+      isLoadingUserToken: true,
+    };
+  }
+
   getCurrentUser() {
     const userPool = new CognitoUserPool({
       UserPoolId: config.cognito.USER_POOL_ID,
@@ -32,15 +41,6 @@ class App extends Component {
         resolve(session.getIdToken().getJwtToken());
       });
     });
-  }
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      userToken: null,
-      isLoadingUserToken: true,
-    };
   }
 
   async componentWillMount() {
@@ -90,7 +90,7 @@ class App extends Component {
 
   render() {
     const childProps = {
-      userToken: this.state.token,
+      userToken: this.state.userToken,
       updateUserToken: this.updateUserToken,
     };
 
@@ -108,7 +108,7 @@ class App extends Component {
             <Nav pullRight>
               { this.state.userToken
                 ? [
-                  <RouteNavItem key={1} onClick={this.handleNavLink} href="/notes/new">New Notes</RouteNavItem>,
+                  <RouteNavItem key={1} onClick={this.handleNavLink} href="/entries/new">New Entry</RouteNavItem>,
                   <NavItem key={2} onClick={this.handleLogout}>Logout</NavItem>
                 ]
                 : [

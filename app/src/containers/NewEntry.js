@@ -11,13 +11,13 @@ import {
 } from 'react-bootstrap';
 import LoaderButton from '../components/LoaderButton';
 import config from '../config';
-import './NewNote.css'
+import './NewEntry.css'
 import {
   invokeApiGateway,
   s3Upload
 } from '../libs/awsLib';
 
-class NewNote extends Component {
+class NewEntry extends Component {
   constructor(props) {
     super(props);
 
@@ -60,7 +60,7 @@ class NewNote extends Component {
         ? await s3Upload(this.file, this.props.userToken)
         : null;
 
-      await this.createNote({
+      await this.createEntry({
         content: this.state.content,
         attachment: uploadFilename,
       });
@@ -73,17 +73,17 @@ class NewNote extends Component {
     }
   }
 
-  createNote(note) {
+  createEntry(entry) {
     return invokeApiGateway({
-      path: '/notes',
+      path: '/entries',
       method: 'POST',
-      body: note
+      body: entry
     }, this.props.userToken);
   }
 
   render() {
     return (
-      <div className="NewNote">
+      <div className="NewEntry">
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="content">
             <FormControl
@@ -117,4 +117,4 @@ class NewNote extends Component {
   }
 }
 
-export default withRouter(NewNote);
+export default withRouter(NewEntry);

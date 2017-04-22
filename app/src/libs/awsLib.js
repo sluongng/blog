@@ -10,8 +10,8 @@ export async function invokeApiGateway(
     path,
     method = 'GET',
     body
-  }, userToken
-) {
+  }, userToken) {
+
   const url = `${config.apiGateway.URL}${path}`;
   const headers = {
     Authorization: userToken
