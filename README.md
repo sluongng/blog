@@ -3,9 +3,9 @@ Front End app for blogging purposes
 
 Demo:
 
-   [AWS CloudFront](d2fzxugzl6byi5.cloudfront.net)
+   [AWS CloudFront](https://d2fzxugzl6byi5.cloudfront.net) (https)
    
-   [AWS S3](http://sluongng-blog-frontend.s3-website.ap-northeast-2.amazonaws.com)
+   [AWS S3](https://sluongng-blog-frontend.s3-website.ap-northeast-2.amazonaws.com) (http)
 
 Plan:
     
