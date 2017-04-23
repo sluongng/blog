@@ -60,6 +60,7 @@ export async function s3Upload(file, userToken) {
       Bucket: config.s3.BUCKET,
     }
   });
+
   const filename = `${AWS.config.credentials.identityId}-${Date.now()}-${file.name}`;
 
   return new Promise((resolve, reject) => (
