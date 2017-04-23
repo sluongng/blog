@@ -9,7 +9,7 @@ out
 gen
 .idea/
 blog-frontend.iml
-/app/src/config.js
+#/app/src/config.js
 app/node_modules/
 app/npm-debug.log
 npm-debug.log
