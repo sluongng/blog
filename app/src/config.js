@@ -2,21 +2,18 @@
  * Created by NB on 4/19/2017.
  */
 
-//Skeleton file only
-//TODO: Config information here
-
 export default {
   MAX_ATTACHMENT_SIZE: 4000000,
   apiGateway: {
-    URL: '',
+    URL: 'https://j4ysur75w9.execute-api.ap-northeast-2.amazonaws.com/prod',
   },
   s3: {
-    BUCKET: ''
+    BUCKET: 'sluongng-blog-uploads',
   },
   cognito: {
-    REGION: '',
-    IDENTITY_POOL_ID: '',
-    USER_POOL_ID: '',
-    APP_CLIENT_ID: '',
+    REGION: 'ap-northeast-2',
+    IDENTITY_POOL_ID: 'ap-northeast-2:5479320f-b40b-4129-981c-a1699b81da57',
+    USER_POOL_ID: 'ap-northeast-2_019NPzAZP',
+    APP_CLIENT_ID: '5t2gvbssekqamlfe8836lfs5tg',
   }
 };
