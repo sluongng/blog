@@ -15,5 +15,8 @@ export default {
     IDENTITY_POOL_ID: '',
     USER_POOL_ID: '',
     APP_CLIENT_ID: '',
-  }
+  },
+  github: {
+    token: '',
+  },
 };
