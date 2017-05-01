@@ -2,7 +2,7 @@
  * Created by NB on 5/1/2017.
  */
 
-import config from '../config';
+// import config from '../config';
 
 export async function invokeGithubApi(
   {
