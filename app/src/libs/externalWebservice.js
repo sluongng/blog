@@ -22,7 +22,7 @@ export async function invokeGithubApi(
   const url = domain + path + '?' + finalQueries;
 
   const headers = {
-    Authorization: 'token ' + config.github.token,
+    // Authorization: 'token ' + config.github.token,
     Accept: 'application/vnd.github.v3+json',
   };
 
