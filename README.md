@@ -1,5 +1,10 @@
 # Blog of Sluongng
-Front End app for blogging purposes
+Front End app for ~~blogging~~ demo purposes.
+
+Description:
+   
+   A platform I use to demo some of the features I developed during my freetime
+   Blogging has been moved to [Medium](https://medium.com/@luongngocson/).
 
 Demo:
 
