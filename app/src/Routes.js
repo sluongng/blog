@@ -11,6 +11,7 @@ import NotFound from './components/NotFound';
 import Home from './containers/Home';
 import Login from './containers/Login';
 import Signup from './containers/Signup';
+import Github from './containers/Github';
 import NewEntry from './containers/NewEntry';
 import Entries from './containers/Entries';
 
@@ -19,6 +20,7 @@ export default ({ childProps }) => (
         <AppliedRoute path="/" exact component={Home} props={childProps} />
         <AppliedRoute path="/login" exact component={Login} props={childProps} />
         <AppliedRoute path="/signup" exact component={Signup} props={childProps} />
+        <AppliedRoute path="/github" exact component={Github} props={childProps} />
         <AppliedRoute path="/entries/new" exact component={NewEntry} props={childProps} />
         <AppliedRoute path="/entries/:id" exact component={Entries} props={childProps} />
 
