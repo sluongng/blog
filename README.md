@@ -13,6 +13,12 @@ Front End app for ~~blogging~~ demo purposes.
    
    [AWS S3](https://sluongng-blog-frontend.s3-website.ap-northeast-2.amazonaws.com) (http)
 
+## Contents:
+
+   AWS fullstack
+   
+   Integration with Github REST api for repositories lookup.
+
 ## Plan:
     
     Create a Front End Web-app to showcase Lambda API.
