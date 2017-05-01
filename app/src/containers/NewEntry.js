@@ -30,7 +30,7 @@ class NewEntry extends Component {
   }
 
   validateForm() {
-    return this.state.content.length > 0;
+    return (this.state.content.length > 0) && (this.state.content.length < 256);
   }
 
   handleChange = (event) => {

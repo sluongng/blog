@@ -42,31 +42,33 @@ class Home extends Component {
   }
 
   entries() {
-    return invokeApiGateway({ path: '/entries'}, this.props.userToken);
+    const results =  invokeApiGateway({ path: '/entries'}, this.props.userToken);
+
+    return results;
   }
 
   renderEntriesList(entries) {
     return [{}].concat(entries).map((entry, i) => (
       i !== 0
-        ? (
-            <ListGroupItem
-              key={entry.entryId}
-              href={`/entries/${entry.entryId}`}
-              onClick={this.handleEntryClick}
-              header={entry.content.trim().split('\n')[0]}
-            >
-              { "Created: " + (new Date(entry.createdAt)).toLocaleString()}
-            </ListGroupItem>
-          )
-        : (
-            <ListGroupItem
-              key="new"
-              href="/entries/new"
-              onClick={this.handleEntryClick}
-            >
-              <h4><b>{'\uFF0B'}</b> Create a new entry</h4>
-            </ListGroupItem>
-          )
+      ? (
+          <ListGroupItem
+            key={entry.entryId}
+            href={`/entries/${entry.entryId}`}
+            onClick={this.handleEntryClick}
+            header={entry.content.trim().split('\n')[0]}
+          >
+            { "Created: " + (new Date(entry.createdAt)).toLocaleString()}
+          </ListGroupItem>
+        )
+      : (
+          <ListGroupItem
+            key="new"
+            href="/entries/new"
+            onClick={this.handleEntryClick}
+          >
+            <h4><b>{'\uFF0B'}</b> Create a new entry</h4>
+          </ListGroupItem>
+        )
     ));
   }
 

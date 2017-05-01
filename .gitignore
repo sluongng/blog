@@ -14,3 +14,4 @@ app/node_modules/
 app/npm-debug.log
 npm-debug.log
 /app/src/config.js
+app/build
