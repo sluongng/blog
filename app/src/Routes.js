@@ -2,29 +2,31 @@
  * Created by NB on 4/16/2017.
  */
 
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from "react";
+import {Route, Switch} from "react-router-dom";
 
-import AppliedRoute from './components/AppliedRoute';
-import NotFound from './components/NotFound';
+import AppliedRoute from "./components/AppliedRoute";
+import NotFound from "./components/NotFound";
 
-import Home from './containers/Home';
-import Login from './containers/Login';
-import Signup from './containers/Signup';
-import Github from './containers/Github';
-import NewEntry from './containers/NewEntry';
-import Entries from './containers/Entries';
+import Home from "./containers/Home";
+import Login from "./containers/Login";
+import Signup from "./containers/Signup";
+import Github from "./containers/Github";
+import Cart from "./containers/Cart";
+import NewEntry from "./containers/NewEntry";
+import Entries from "./containers/Entries";
 
-export default ({ childProps }) => (
-    <Switch>
-        <AppliedRoute path="/" exact component={Home} props={childProps} />
-        <AppliedRoute path="/login" exact component={Login} props={childProps} />
-        <AppliedRoute path="/signup" exact component={Signup} props={childProps} />
-        <AppliedRoute path="/github" exact component={Github} props={childProps} />
-        <AppliedRoute path="/entries/new" exact component={NewEntry} props={childProps} />
-        <AppliedRoute path="/entries/:id" exact component={Entries} props={childProps} />
+export default ({childProps}) => (
+  <Switch>
+    <AppliedRoute path="/" exact component={Home} props={childProps}/>
+    <AppliedRoute path="/login" exact component={Login} props={childProps}/>
+    <AppliedRoute path="/signup" exact component={Signup} props={childProps}/>
+    <AppliedRoute path="/github" exact component={Github} props={childProps}/>
+    <AppliedRoute path="/cart" exact component={Cart} props={childProps}/>
+    <AppliedRoute path="/entries/new" exact component={NewEntry} props={childProps}/>
+    <AppliedRoute path="/entries/:id" exact component={Entries} props={childProps}/>
 
-        { /* Safety route to handle 404 */ }
-        <Route component={NotFound}/>
-    </Switch>
+    { /* Safety route to handle 404 */ }
+    <Route component={NotFound}/>
+  </Switch>
 );

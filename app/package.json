@@ -5,6 +5,7 @@
   "dependencies": {
     "amazon-cognito-identity-js": "^1.16.0",
     "aws-sdk": "^2.42.0",
+    "lodash": "^4.17.4",
     "react": "^15.5.4",
     "react-bootstrap": "^0.30.8",
     "react-dom": "^15.5.4",

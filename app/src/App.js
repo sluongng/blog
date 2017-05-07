@@ -114,7 +114,9 @@ class App extends Component {
                 : [
                   <RouteNavItem key={1} onClick={this.handleNavLink} href="/signup">Signup</RouteNavItem>,
                   <RouteNavItem key={2} onClick={this.handleNavLink} href="/login">Login</RouteNavItem>,
-                  <RouteNavItem key={3} onClick={this.handleNavLink} href="/github">Github</RouteNavItem>
+                  <RouteNavItem key={3} onClick={this.handleNavLink} href="/github">Github</RouteNavItem>,
+                  <RouteNavItem key={4} onClick={this.handleNavLink} href="/cart">Cart</RouteNavItem>
+
                 ]
               }
             </Nav>

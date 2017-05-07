@@ -28,6 +28,29 @@ export async function invokeApiGateway(
   return results.json();
 }
 
+export async function invokeLzdApiGateway(
+  {
+    path,
+    method = 'GET',
+    body
+  }, userToken) {
+
+  const url = `${config.lzdCartApiGateway.URL}${path}`;
+  const headers = {
+    "Content-Type": 'application/json'
+  };
+
+  body = (body) ? JSON.stringify(body) : body;
+
+  const results = await fetch(url, {
+    method,
+    body,
+    headers
+  });
+
+  return results.json();
+}
+
 export function getAwsCredentials(userToken) {
   const authenticator = `cognito-idp.${config.cognito.REGION}.amazonaws.com/${config.cognito.USER_POOL_ID}`;
 
