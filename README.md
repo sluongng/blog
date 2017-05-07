@@ -1,23 +1,35 @@
 # Blog of Sluongng
-Front End app for blogging purposes
+Front End app for ~~blogging~~ demo purposes.
 
-Demo:
+## Description:
+   
+   A platform I use to demo some of the features I developed during my freetime
+   
+   Blogging has been moved to [Medium](https://medium.com/@luongngocson/).
+
+## Demo:
 
    [AWS CloudFront](https://d2fzxugzl6byi5.cloudfront.net) (https)
    
    [AWS S3](https://sluongng-blog-frontend.s3-website.ap-northeast-2.amazonaws.com) (http)
 
-Plan:
+## Contents:
+
+   AWS fullstack
+   
+   Integration with Github REST api for repositories lookup.
+
+## Plan:
     
     Create a Front End Web-app to showcase Lambda API.
     
-Technologies:
+## Technologies:
     
     Core UI: ReactJS
     Authentication: AWS Cognito
     Hosting: AWS S3
 
-Milestones:
+## Milestones:
 
 - [X] Functional UI
 - [X] Authentication Integration
