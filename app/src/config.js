@@ -9,21 +9,21 @@
 export default {
   MAX_ATTACHMENT_SIZE: 4000000,
   apiGateway: {
-    URL: 'https://j4ysur75w9.execute-api.ap-northeast-2.amazonaws.com/prod',
+    URL: '',
   },
   s3: {
-    BUCKET: 'sluongng-blog-uploads',
+    BUCKET: '',
   },
   cognito: {
-    REGION: 'ap-northeast-2',
-    IDENTITY_POOL_ID: 'ap-northeast-2:5479320f-b40b-4129-981c-a1699b81da57',
-    USER_POOL_ID: 'ap-northeast-2_019NPzAZP',
-    APP_CLIENT_ID: '5t2gvbssekqamlfe8836lfs5tg',
+    REGION: '',
+    IDENTITY_POOL_ID: '',
+    USER_POOL_ID: '',
+    APP_CLIENT_ID: '',
   },
   github: {
-    token: 'ccc223f162110780a667e98049ae677132d81f83',
+    token: '',
   },
   lzdCartApiGateway: {
-    URL: 'https://ne2nlvp7ic.execute-api.ap-northeast-2.amazonaws.com/prod'
+    URL: ''
   }
 };
