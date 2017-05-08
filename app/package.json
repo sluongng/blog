@@ -18,6 +18,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "aws s3 sync build/ s3://sluongng-blog-frontend",
+    "postdeploy": "aws cloudfront create-invalidation --distribution-id E35FJJ8T3DINBS --paths \"/*\"",
     "eject": "react-scripts eject"
   }
 }

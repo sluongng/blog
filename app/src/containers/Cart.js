@@ -4,7 +4,19 @@
 
 import React, {Component} from "react";
 import {withRouter} from "react-router-dom";
-import {ControlLabel, FormControl, FormGroup, InputGroup, Form, PageHeader, ListGroup, Col, Panel, Grid, Button} from "react-bootstrap";
+import {
+  ControlLabel,
+  FormControl,
+  FormGroup,
+  InputGroup,
+  Form,
+  PageHeader,
+  ListGroup,
+  Col,
+  Panel,
+  Grid,
+  Button
+} from "react-bootstrap";
 import "./Cart.css";
 import {invokeLzdApiGateway} from "../libs/awsLib";
 import _ from "lodash";
@@ -15,7 +27,7 @@ class Cart extends Component {
 
     this.state = {
       isLoading: false,
-      cartContent: null,
+      cartContent: null
     };
   }
 
@@ -36,11 +48,38 @@ class Cart extends Component {
     this.setState({isLoading: false});
   }
 
-  async reCalculateCart() {
+  async changeQuantity( iter, event ) {
     this.setState({isLoading: true});
 
+    const newQuantity = event.target.value;
+
+    let newCart = _.cloneDeep(this.state.cartContent);
+
+    newCart.items[iter].quantity = newQuantity;
+
     try {
-      const results = await this.calCart(this.state.cartContent);
+      const results = await this.calCart(newCart);
+
+      this.setState({cartContent: results});
+    }
+    catch (e) {
+      alert(e);
+    }
+
+    this.setState({isLoading: false});
+  }
+
+  async changeDestination(event) {
+    this.setState({isLoading: true});
+
+    const newDestination = event.target.value;
+
+    let newCart = _.cloneDeep(this.state.cartContent);
+
+    newCart.destination = newDestination;
+
+    try {
+      const results = await this.calCart(newCart);
 
       this.setState({cartContent: results});
     }
@@ -97,7 +136,8 @@ class Cart extends Component {
               Quantity
             </Col>
             <Col sm={8}>
-              <FormControl type="number" defaultValue={item.quantity} onChange={this.reCalculateCart.bind(this)}/>
+              <FormControl type="number" defaultValue={item.quantity} onBlur={this.changeQuantity.bind(this, i)}/>
+              {/*<FormControl type="number" defaultValue={item.quantity} />*/}
             </Col>
           </FormGroup>
 
@@ -114,6 +154,8 @@ class Cart extends Component {
       </Panel>
     ));
   }
+
+
 
   renderCartInfo(cart) {
     return (
@@ -134,13 +176,14 @@ class Cart extends Component {
               Destination
             </Col>
             <Col sm={8}>
-              <FormControl componentClass="select" placeholder="Postal Code" >
+              <FormControl componentClass="select" placeholder="Postal Code" value={this.state.cartContent.destination} onChange={this.changeDestination.bind(this)}>
                 <option value="100001">100001</option>
                 <option value="100002">100002</option>
                 <option value="100003">100003</option>
               </FormControl>
             </Col>
           </FormGroup>
+
           <FormGroup controlId="Total Price">
             <Col componentClass={ControlLabel} sm={4}>
               Total Price
