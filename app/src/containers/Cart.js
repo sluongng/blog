@@ -189,7 +189,10 @@ class Cart extends Component {
               Total Price
             </Col>
             <Col sm={8}>
-              <FormControl readOnly type="number" defaultValue={cart.cartPrice} />
+              <InputGroup>
+                <FormControl readOnly type="number" defaultValue={cart.cartPrice} />
+                <InputGroup.Addon>$</InputGroup.Addon>
+              </InputGroup>
             </Col>
           </FormGroup>
           <FormGroup controlId="PurchaseBttn" style={{maxWidth: 250, margin: '0 auto 10px'}}>
